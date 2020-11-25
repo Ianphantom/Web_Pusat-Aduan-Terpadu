@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="841" height="870" viewBox="0 0 841 870">
+  <defs>
+    <pattern id="pattern" preserveAspectRatio="none" width="100%" height="100%" viewBox="0 0 626 547">
+      <image width="626" height="547" xlink:href="Group%2013-image.png"/>
+    </pattern>
+  </defs>
+  <g id="Group_13" data-name="Group 13" transform="translate(0 -88)">
+    <rect id="Image_1" data-name="Image 1" width="841" height="870" transform="translate(0 88)" fill="url(#pattern)"/>
+    <text id="Sampaikan_aspirasi_mu_dengan_cepat_dan_mudah_" data-name="Sampaikan aspirasi mu dengan cepat 
+dan mudah " transform="translate(517 451)" font-size="19" font-family="ComicSansMS, Comic Sans MS"><tspan x="0" y="0">Sampaikan aspirasi mu dengan cepat </tspan><tspan x="0" y="27">dan mudah </tspan></text>
+    <g id="Group_1" data-name="Group 1" transform="translate(517 382)">
+      <path id="Path_3" data-name="Path 3" d="M0,0H167V39H0Z" fill="#489eba"/>
+      <text id="Integrasi" transform="translate(84 30)" fill="#fff" font-size="25" font-family="ComicSansMS, Comic Sans MS"><tspan x="-74.084" y="0">INTEGRASI</tspan></text>
+    </g>
+  </g>
+</svg>

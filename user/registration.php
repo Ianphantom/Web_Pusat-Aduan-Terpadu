@@ -69,7 +69,7 @@
                                 <input type="email" class="form-control" placeholder="Email" id="email" name="email" required="required" onBlur="availability()">
                                 <span id="user-availability-status1" style="font-size:12px;"></span><br>
                                 <input type="password" class="form-control" placeholder="Password" required="required" name="password"><br >
-                                <input type="text" class="form-control" maxlength="16" name="nik" placeholder="NIK" required="required" autofocus>
+                                <input type="text" class="form-control" maxlength="16" name="nik" placeholder="NIK" required="required" autofocus pattern="1212.+">
                                 <label for="NIK" class="align-items-left text-left" style="color:red;font-size:12px;text-align:left">*Khusus KTP Tobasa</label><br>
                                 <button class="btn btn-theme btn-block"  type="submit" name="submit" id="submit"><i class="fa fa-user"></i> Register</button>
                                 <hr class="divider my-4">

@@ -80,7 +80,7 @@
                 </li>
 				</ul>
 				
-				<div class="to-top">
+				<div>
 					<a class="btn btn-primary btn-customized-3" href="logout.php" role="button">
 	                    <i class="fas fa-user"></i> Log Out
 	                </a>

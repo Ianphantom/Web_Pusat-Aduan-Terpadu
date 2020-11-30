@@ -9,6 +9,7 @@
         $query = "insert into users(name,email,password,nik) values ('$name','$email','$password','$nik')";
         $q = mysqli_query($con, $query);
         $msg = "Anda telah berhasil melakukan pendaftaran, silahkan melakukan login"; 
+        header("location:index.php?message=$msg");
     }
 ?>
 <!doctype html>

@@ -2,6 +2,10 @@
     session_start();
     error_reporting(0);
     include("common/config.php");
+    if(!empty($_GET['message'])) {
+        $msg = $_GET['message'];
+        unset($_GET['messsage']);
+    }
     if(isset($_POST['submit'])){
         $query = "SELECT * FROM users WHERE email='".$_POST['email']."' and password='".md5($_POST['password'])."'";
         $ret=mysqli_query($con,$query);
@@ -88,16 +92,22 @@
                     <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
                         <form class="form-login" name="login" method="post">
                             <h2 class="form-login-heading">Masuk Akun</h2>
-                            <p style="color:red; padding: 1px; font-size:12px;">
-                                <?php if($error){
-                                    echo htmlentities($error);
-                                }?>
-                            </p>
-                            <p style="color:green; padding: 1px; font-size:12px;">
-                                <?php if($msg){
-                                    echo htmlentities($msg);
-                                }?>
-                            </p>
+                            <?php if($msg){ ?>
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    <strong>Selamat </strong><?php echo htmlentities($msg)?>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            <?php } ?>
+                            <?php if($error){ ?>
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    <strong>Maaf </strong><?php echo htmlentities($error)?>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            <?php } ?>
                             <div class="login-wrap">
                                 <input type="text" class="form-control" name="email" placeholder="Masukkan Email"  required autofocus style="text-align: center;">
                                 <br>

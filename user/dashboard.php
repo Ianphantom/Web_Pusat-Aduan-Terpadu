@@ -5,7 +5,7 @@
         header('location:index.php');
     }else {
         $query=mysqli_query($con,"select * from users where email='".$_SESSION['login']."'");
-        $row=mysqli_fetch_array($query)
+		$row=mysqli_fetch_array($query)
     ?>
 <!doctype html>
 <html lang="en">
@@ -139,7 +139,11 @@
 				                	</div>
 			                		<div class="col-md-8">
 			                    		<h3>Belum diproses</h3>
-			                    		<p>Anda memiliki 0 aduan yang belum diproses</p>
+										<?php
+											$ad1 = mysqli_query($con, "SELECT count(id_user) AS jumlah FROM daftar_komplain WHERE id_user='".$_SESSION['id']."' AND status IS NULL"); 
+											$aduan1=mysqli_fetch_array($ad1);
+										?>
+			                    		<p>Anda memiliki <?php echo htmlentities($aduan1['jumlah']); ?> aduan yang belum diproses</p>
 			                    	</div>
 			                    </div>
 		                    </div>
@@ -152,7 +156,11 @@
 				                	</div>
 			                		<div class="col-md-8">
 			                    		<h3>Sedang diproses</h3>
-			                    		<p>Anda memiliki 0 aduan yang sedang diproses</p>
+										<?php 
+											$ad2 = mysqli_query($con, "SELECT count(id_user) AS jumlah FROM daftar_komplain WHERE id_user='".$_SESSION['id']."' AND status='Sedang diproses'"); 
+											$aduan2=mysqli_fetch_array($ad2);
+										?>
+			                    		<p>Anda memiliki <?php echo htmlentities($aduan2['jumlah']); ?> aduan yang sedang diproses</p>
 			                    	</div>
 			                    </div>
 		                    </div>
@@ -165,7 +173,11 @@
 				                	</div>
 			                		<div class="col-md-8">
 			                    		<h3>Sudah diproses</h3>
-			                    		<p>Anda memiliki 0 aduan yang sudah diproses</p>
+										<?php 
+											$ad3 = mysqli_query($con, "SELECT count(id_user) AS jumlah FROM daftar_komplain WHERE id_user='".$_SESSION['id']."' AND status='Closed'"); 
+											$aduan3=mysqli_fetch_array($ad3);	
+										?>
+			                    		<p>Anda memiliki <?php echo htmlentities($aduan3['jumlah']); ?> aduan yang sudah diproses</p>
 			                    	</div>
 			                    </div>
 		                    </div>

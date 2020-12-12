@@ -33,18 +33,22 @@
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
         <link rel="stylesheet" href="assets/css/style.css">
+        <script type="text/javascript">
+            function valid(){
+                if(document.chng.newpass.value != document.chng.confirmpass.value){
+                    alert("Password yang anda masukkan tidak sama  !!");
+                    document.change.confirmpass.focus();
+                    return false;
+                }
+                return true;
+            }
+        </script>
 
     </head>
 
     <body>
-
-		<!-- Wrapper -->
     	<div class="wrapper">
-
-			<!-- Sidebar -->
 			<nav class="sidebar">
-				
-				<!-- close sidebar menu -->
 				<div class="dismiss">
 					<i class="fas fa-arrow-left"></i>
 				</div>
@@ -113,20 +117,11 @@
 				</div>
 			
 			</nav>
-			<!-- End sidebar -->
-			
-			<!-- Dark overlay -->
     		<div class="overlay"></div>
-
-			<!-- Content -->
 			<div class="content">
-			
-				<!-- open sidebar menu -->
 				<a class="btn btn-primary btn-customized open-menu" href="#" role="button">
                     <i class="fas fa-align-left"></i> <span>Menu</span>
                 </a>
-			
-                <!-- Top content -->
                 <div class="section-4-container section-container section-container-image-bg" id="section-4">
 			        <div class="container">
 			            <div class="row">
@@ -159,7 +154,7 @@
                             </div>
                             <div class="form-row" style="padding:20px">
                                 <div class="form-group col-md-7 text-dark" style="padding:20px;">
-                                    <form class="form-horizontal style-form" method="post" name="change" onSubmit="return validation();">
+                                    <form class="form-horizontal style-form" method="post" name="chng" onSubmit="return valid();">
                                         <div class="form-group">
                                             <div class="row">
                                                 <label class="col-sm-2 col-sm-2 control-label">Current Password</label>
@@ -206,12 +201,8 @@
 			        </div>
 		        </footer>
 	        </div>
-	        <!-- End content -->
         
         </div>
-        <!-- End wrapper -->
-
-        <!-- Javascript -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.0.0/jquery-migrate.min.js" integrity="sha512-DfYvPq8dRtcMvBM5HQqofz2dx7bzKBsvWc5X1apElb28ekQIrH98r6iysAKss5QO6tbY6pRV6RNp2DHeZFy+Cw==" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

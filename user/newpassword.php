@@ -13,31 +13,26 @@
                 mysqli_query($con, "update users set password='$newpass' where password='$pass'");
                 $msg = "Password Andatelah diganti";
             }else{
-                $error = "Password yang Anda masukkan tidak seusai dengan password Anda";
+                $error = "Password yang Anda masukkan tidak sesuai dengan password Anda";
             }
         }
     ?>
 <!doctype html>
 <html lang="en">
-
     <head>
-
-		<!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         
         <title>Pusat Aduan Masyarakat Tobasa</title>
-
-        <!-- CSS -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500&display=swap">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
         <link rel="stylesheet" href="assets/css/style.css">
         <script type="text/javascript">
             function valid(){
-                if(document.chng.newpass.value != document.chng.confirmpass.value){
+                if(document.getElementById("newpass").value != document.getElementById("confirmpass").value){
                     alert("Password yang anda masukkan tidak sama  !!");
-                    document.change.confirmpass.focus();
+                    document.getElementById("confirmpass").focus();
                     return false;
                 }
                 return true;
@@ -154,7 +149,7 @@
                             </div>
                             <div class="form-row" style="padding:20px">
                                 <div class="form-group col-md-7 text-dark" style="padding:20px;">
-                                    <form class="form-horizontal style-form" method="post" name="chng" onSubmit="return valid();">
+                                    <form class="form-horizontal style-form" method="post" name="chng">
                                         <div class="form-group">
                                             <div class="row">
                                                 <label class="col-sm-2 col-sm-2 control-label">Current Password</label>
@@ -167,7 +162,7 @@
                                             <div class="row">
                                                 <label class="col-sm-2 col-sm-2 control-label">New Password</label>
                                                 <div class="col-sm-10">
-                                                    <input type="password" name="newpass" required="required" class="form-control">
+                                                    <input type="password" id="newpass" name="newpass" required="required" class="form-control">
                                                 </div>
                                             </div>
                                         </div>
@@ -175,13 +170,13 @@
                                             <div class="row">
                                                 <label class="col-sm-2 col-sm-2 control-label">Confirm Password</label>
                                                 <div class="col-sm-10">
-                                                    <input type="password" name="confirmpass" required="required" class="form-control">
+                                                    <input type="password" id="confirmpass" name="confirmpass" required="required" class="form-control">
                                                 </div>
                                             </div>
                                         </div>
                                     </form>
                                     <div class="text-center">
-                                        <button type="submit" name="submit" class="btn btn-primary">Ganti</button>
+                                        <button type="submit" name="submit" class="btn btn-primary"  onclick="return valid();">Ganti</button>
                                     </div>
                                 </div>
                                 <div class="form-group col-md-5 text-center" style="  background: linear-gradient(to right, #00b4db, #0083b0)">

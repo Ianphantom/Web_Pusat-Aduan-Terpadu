@@ -3,7 +3,7 @@
     if(!empty($_POST["category"])){
         $val=intval($_POST['category']);
         if(!is_numeric($val)){
- 	    echo htmlentities("invalid industryid");exit;
+ 	    echo htmlentities("invalid");exit;
     }else{
         $sub = mysqli_query($con,"SELECT * FROM subcategory WHERE id_category ='$val'");
         ?><option selected="selected">Pilih Subcategory </option><?php

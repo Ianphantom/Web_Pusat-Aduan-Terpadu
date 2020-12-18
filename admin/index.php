@@ -71,7 +71,7 @@
                                         <div class="custom-control custom-checkbox mb-3"> <input id="customCheck1" type="checkbox" checked class="custom-control-input"> <label for="customCheck1" class="custom-control-label">Remember password</label> </div> 
                                         <button name="submit" type="submit" class="btn btn-danger btn-block text-uppercase mb-2 rounded-pill shadow-sm">LOGIN</button>
                                         <div class="text-center d-flex justify-content-between mt-4">
-                                            <p> OR &nbsp<a href="#" class="font-italic text-muted"> <u>-----</u></a></p>
+                                            <p> OR &nbsp<a href="#" class="font-italic text-muted"> <u></u></a></p>
                                         </div>
                                     </form>
                                 </div>

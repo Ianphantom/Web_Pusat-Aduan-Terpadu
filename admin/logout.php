@@ -8,5 +8,5 @@
     session_unset();
 ?>
 <script>
-    document.location="../admin/index.html";
+    document.location="../admin/index.php";
 </script>

@@ -1,6 +1,15 @@
+<?php 
+    session_start();
+    error_reporting(0);
+    include("common/config.php");
+    if(strlen($_SESSION['login'])==0){ 
+        header('location:index.php');
+    }else {
+        $query=mysqli_query($con,"select * from users where email='".$_SESSION['login']."'");
+		$row=mysqli_fetch_array($query)
+    ?>
 <!DOCTYPE html>
 <html lang="en">
-<head>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -49,13 +58,25 @@
                                     <i class="menu-icon icon-bullhorn"></i><i class="icon-chevron-down pull-right"></i><i class="icon-chevron-up pull-right">
                                     </i>Aduan </a>
                                     <ul id="togglePages" class="collapse unstyled">
-                                        <li><a href="belumDiproses.php"><i class="icon-inbox"></i>Belum Diproses </a></li>
-                                        <li><a href="sedangDiproses.php"><i class="icon-inbox"></i>Sedang Diproses </a></li>
-                                        <li><a href="selesai.php"><i class="icon-inbox"></i>Selesai </a></li>
+                                        <?php 
+                                            $q1 = mysqli_query($con, "SELECT count(nomor_komplain) as jumlah FROM daftar_komplain where status IS NULL"); 
+                                            $adn1 = mysqli_fetch_array($q1); 
+                                            $q2 =  mysqli_query($con, "SELECT count(nomor_komplain) as jumlah FROM daftar_komplain where status='Sedang diproses'");
+                                            $adn2 = mysqli_fetch_array($q2);
+                                            $q3 =  mysqli_query($con, "SELECT count(nomor_komplain) as jumlah FROM daftar_komplain where status='Closed'");
+                                            $adn3 = mysqli_fetch_array($q3);
+                                        ?>
+                                        <li><a href="belumDiproses.php"><i class="icon-inbox"></i>Belum Diproses <b class="label red pull-right"><?php echo htmlentities($adn1['jumlah']) ?></b></a></li>
+                                        <li><a href="sedangDiproses.php"><i class="icon-inbox"></i>Sedang Diproses <b class="label red pull-right"><?php echo htmlentities($adn2['jumlah']) ?></b></a></li>
+                                        <li><a href="selesai.php"><i class="icon-inbox"></i>Selesai <b class="label green pull-right"><?php echo htmlentities($adn3['jumlah']) ?></b></a></li>
                                     </ul>
                                 </li>
+                                <?php 
+                                    $query = mysqli_query($con, "SELECT count(id) as jumlah FROM users");
+                                    $rowuser =mysqli_fetch_array($query);
+                                ?>
                                 <li>
-                                    <a href="pengguna.php"><i class="menu-icon icon-inbox"></i>Pengguna<b class="label green pull-right">11</b> </a>
+                                    <a href="pengguna.php"><i class="menu-icon icon-inbox"></i>Pengguna<b class="label green pull-right"><?php echo htmlentities($rowuser['jumlah']) ?></b> </a>
                                 </li>
                             </ul>
                             <ul class="widget widget-menu unstyled">
@@ -71,7 +92,7 @@
                             </ul>
                             <ul class="widget widget-menu unstyled">
                                 <li>
-                                    <a href="userlogin.php"><i class="menu-icon icon-paste"></i>User Logig Log </a>
+                                    <a href="userlogin.php"><i class="menu-icon icon-paste"></i>User Login Log </a>
                                 </li>
                                 <li>
                                     <a href="logout.php"><i class="menu-icon icon-signout"></i>Logout </a>
@@ -81,6 +102,79 @@
                         <!--/.sidebar-->
                     </div>
                     <!--/.span3-->
+                    <div class="span9">
+                        <div class="content">
+                            <div class="btn-controls">
+                                <div class="btn-box-row row-fluid">
+                                    <?php 
+										$query2 = mysqli_query($con, "SELECT count(id) AS jumlah FROM kecamatan"); 
+										$rowselesai =mysqli_fetch_array($query2);	
+									?>
+                                    <a href="kecamatan.php" class="btn-box big span4"><i class="icon-home"></i><b><?php echo htmlentities($rowselesai['jumlah']) ?></b>
+                                        <p class="text-muted">
+                                            Kecamatan</p>
+                                    </a>
+                                    <a href="pengguna.php" class="btn-box big span4"><i class="icon-user"></i><b><?php echo htmlentities($rowuser['jumlah']) ?></b>
+                                        <p class="text-muted">
+                                            Pengguna</p>
+                                    </a>
+                                    <?php
+                                        $query1= mysqli_query($con, "SELECT count(nomor_komplain) as jumlah FROM daftar_komplain");
+                                        $rowaduan = mysqli_fetch_array($query1);
+                                    ?>
+                                    <a href="#" class="btn-box big span4"><i class=" icon-random"></i><b><?php echo htmlentities($rowaduan['jumlah']) ?></b>
+                                        <p class="text-muted">
+                                            Total Aduan</p>
+                                    </a>
+                                </div>
+                                <div class="btn-box-row row-fluid">
+                                    <ul class="widget widget-usage unstyled span12">
+                                        <li>
+                                            <?php
+                                                $ad3 = mysqli_query($con, "SELECT count(id_user) AS jumlah FROM daftar_komplain WHERE status='Closed'"); 
+                                                $aduan3=mysqli_fetch_array($ad3);	 
+                                            ?>
+                                            <p>
+                                                <strong>Selesai</strong> <span class="pull-right small muted"><?php echo htmlentities($aduan3['jumlah']) ?></span>
+                                            </p>
+                                            <div class="progress tight">
+                                                <div class="bar bar-success" style="width: <?php if($aduan3['jumlah']/$rowaduan['jumlah']<=2) echo htmlentities(3); else echo htmlentities($aduan3['jumlah']/$rowaduan['jumlah'])?>% ;">
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <?php
+                                                $ad2 = mysqli_query($con, "SELECT count(id_user) AS jumlah FROM daftar_komplain WHERE status='Sedang diproses'"); 
+                                                $aduan2=mysqli_fetch_array($ad2);
+                                            ?>
+                                            <p>
+                                                <strong>Sedang Diproses</strong> <span class="pull-right small muted"><?php echo htmlentities($aduan2['jumlah'])?></span>
+                                            </p>
+                                            <div class="progress tight">
+                                                <div class="bar bar-warning" style="width:  <?php if($aduan2['jumlah']*100/$rowaduan['jumlah']==0) echo htmlentities(3); else echo htmlentities($aduan2['jumlah']*100/$rowaduan['jumlah'])?>%;">
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <?php
+                                                $ad1 = mysqli_query($con, "SELECT count(id_user) AS jumlah FROM daftar_komplain WHERE status IS NULL"); 
+                                                $aduan1=mysqli_fetch_array($ad1);
+                                            ?>
+                                            <p>
+                                                <strong>Belum Diproses</strong> <span class="pull-right small muted"><?php echo htmlentities($aduan1['jumlah']) ?></span>
+                                            </p>
+                                            <div class="progress tight">
+                                                <div class="bar bar-danger" style="width:  <?php if($aduan1['jumlah']*100/$rowaduan['jumlah']==0) echo htmlentities(3); else echo htmlentities($aduan1['jumlah']*100/$rowaduan['jumlah'])?>%;">
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!--/.content-->
+                    </div>
+                    <!--/.span9-->
                 </div>
             </div>
             <!--/.container-->
@@ -88,7 +182,7 @@
         <!--/.wrapper-->
         <div class="footer">
             <div class="container">
-                <b class="copyright">&copy; 2014 Edmin - EGrappler.com </b>All rights reserved.
+                <b class="copyright">&copy; 2020 - Pusat Aduan Tobasa </b>All rights reserved.
             </div>
         </div>
         <script src="scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
@@ -100,3 +194,5 @@
         <script src="scripts/common.js" type="text/javascript"></script>
       
     </body>
+</html>
+<?php } ?>

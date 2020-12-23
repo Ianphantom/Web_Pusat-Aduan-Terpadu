@@ -227,6 +227,36 @@
                                         </div>
                                     </div>
                                 </div>
+
+
+                                <?php 
+                                    $nk = $_GET['kode'];
+                                    $remark = mysqli_query($con, "select * from remark where nomor_komplain='$nk'  ORDER BY nomor_komplain DESC LIMIT 1");
+                                    $rowremark = mysqli_fetch_array($remark);
+                                    if($rowremark>0){ ?>
+                                            <div class="row" style="color:black">
+                                                <div class="col-md-6">
+                                                        <div class="row text-left">
+                                                            <div class="col-md-4">
+                                                                <p><strong>Remark : </strong></p>
+                                                            </div>
+                                                            <div class="col-md-8">
+                                                                <?php echo htmlentities($rowremark['remark']) ?>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="row text-left">
+                                                            <div class="col-md-4">
+                                                                <p><strong>Tanggal Remark : </strong></p>
+                                                            </div>
+                                                            <div class="col-md-8">
+                                                                <?php echo htmlentities($rowremark['regDate']) ?>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                    <?php } ?>
                                 <div class="row" style="color:black">
                                     <div class="col-md-6">
                                         <div class="row text-left">

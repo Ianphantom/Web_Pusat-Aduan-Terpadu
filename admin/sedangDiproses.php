@@ -131,7 +131,7 @@
                                                     <td>
                                                         <?php 
                                                             if($row['status']=="Sedang diproses"){ ?>
-                                                                <button type="button" class="btn btn-danger">Sedang Diproses</button>
+                                                                <button type="button" class="btn btn-warning">Sedang Diproses</button>
                                                             <?php } 
                                                         ?>
                                                     </td>

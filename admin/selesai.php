@@ -131,7 +131,7 @@
                                                     <td>
                                                         <?php 
                                                             if($row['status']=='Closed'){ ?>
-                                                                <button type="button" class="btn btn-danger">Selesai</button>
+                                                                <button type="button" class="btn btn-success">Selesai</button>
                                                             <?php } 
                                                         ?>
                                                     </td>

@@ -130,7 +130,7 @@
                                                     <td><?php echo htmlentities($row['email']) ?></td>
                                                     <td><?php echo htmlentities($row['nik']) ?></td>
                                                     <td>
-                                                        <a href="detailPengguna?kode=<?php echo htmlentities($hasil['nomor_komplain']) ?>"><button type="button" class="btn btn-primary">Details</button></a>
+                                                        <a href="detailPengguna.php?kode=<?php echo htmlentities($hasil['nomor_komplain']) ?>"><button type="button" class="btn btn-primary">Details</button></a>
                                                         <a href="pengguna.php?kode=<?php echo htmlentities($hasil['nomor_komplain']) ?>&&action=del" title="delete" onclick="return confirm('Apakah anda ingin menghapus user ini?')"><button type="button" class="btn btn-danger">Hapus</button></a>
                                                     </td>
                                                 </tr>

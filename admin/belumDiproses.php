@@ -135,7 +135,7 @@
                                                             <?php } 
                                                         ?>
                                                     </td>
-                                                    <td><a href="complaintDetail.php?kode=<?php echo htmlentities($hasil['nomor_komplain']) ?>"><button type="button" class="btn btn-primary">Details</button></a></td>
+                                                    <td><a href="complaintDetail.php?kode=<?php echo htmlentities($row['nomor_komplain']) ?>"><button type="button" class="btn btn-primary">Details</button></a></td>
                                                 </tr>
                                                 <?php } ?>
                                         </tbody>

@@ -8,8 +8,8 @@
         if(!empty($_GET['kode'])){
             $nomorKomplain = $_GET['kode'];
         }
-        $query=mysqli_query($con,"select * from users where email='".$_SESSION['login']."'");
-		$row=mysqli_fetch_array($query)
+        // $query=mysqli_query($con,"select * from users where email='".$_SESSION['login']."'");
+		// $row=mysqli_fetch_array($query)
     ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -156,7 +156,7 @@
                                         <tr>
                                             <td><strong>Action<strong></td>
                                             <td><a href="updateComplaint.php?kode=<?php echo htmlentities($rowdetails['nomor_komplain']) ?>"><div class="btn btn-primary">Proses/Olah</div></a></td>
-                                            <td colspan='2'><a href="detailPengguna.php?id=<?php echo htmlentities($rowdetails['id_user'])?>"><div class="btn btn-primary">Detail User</div></a></td>
+                                            <td colspan='2'><a href="detailPengguna.php?kode=<?php echo htmlentities($rowdetails['id_user'])?>"><div class="btn btn-primary">Detail User</div></a></td>
                                         </tr>
                                     </table>
                                 </div>

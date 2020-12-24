@@ -5,8 +5,13 @@
     if(strlen($_SESSION['login'])==0){ 
         header('location:index.php');
     }else {
-        $query=mysqli_query($con,"select * from users where email='".$_SESSION['login']."'");
-		$row=mysqli_fetch_array($query)
+        if(isset($_GET['kode']) && $_GET['action']=='del'){
+            $userid=$_GET['kode'];
+            $query=mysqli_query($con,"delete from users where id='$userid'");
+            header('location:pengguna.php');
+        }
+        // $query=mysqli_query($con,"select * from users where email='".$_SESSION['login']."'");
+		// $row=mysqli_fetch_array($query)
     ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -106,7 +111,7 @@
                         <div class="content">
                         <div class="module">
                                 <div class="module-head">
-                                    <h3>Aduan Belum Diproses</h3>
+                                    <h3>Daftar Pengguna</h3>
                                 </div>
                                 <div class="module-body table">
                                     <table cellpadding="0" cellspacing="0" border="0" class="datatable-1 table table-bordered table-striped	 display"
@@ -130,8 +135,8 @@
                                                     <td><?php echo htmlentities($row['email']) ?></td>
                                                     <td><?php echo htmlentities($row['nik']) ?></td>
                                                     <td>
-                                                        <a href="detailPengguna.php?kode=<?php echo htmlentities($hasil['nomor_komplain']) ?>"><button type="button" class="btn btn-primary">Details</button></a>
-                                                        <a href="pengguna.php?kode=<?php echo htmlentities($hasil['nomor_komplain']) ?>&&action=del" title="delete" onclick="return confirm('Apakah anda ingin menghapus user ini?')"><button type="button" class="btn btn-danger">Hapus</button></a>
+                                                        <a href="detailPengguna.php?kode=<?php echo htmlentities($row['id']) ?>"><button type="button" class="btn btn-primary">Details</button></a>
+                                                        <a href="pengguna.php?kode=<?php echo htmlentities($row['id']) ?>&&action=del" title="delete" onclick="return confirm('Apakah anda ingin menghapus user ini?')"><button type="button" class="btn btn-danger">Hapus</button></a>
                                                     </td>
                                                 </tr>
                                                 <?php } ?>

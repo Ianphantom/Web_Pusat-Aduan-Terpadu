@@ -14,8 +14,8 @@
             $msg = "Data berhasil diupdate";
             header("location:dashboard.php?msg=$msg");
         }
-        $query=mysqli_query($con,"select * from users where email='".$_SESSION['login']."'");
-        $row=mysqli_fetch_array($query)
+        // $query=mysqli_query($con,"select * from users where email='".$_SESSION['login']."'");
+        // $row=mysqli_fetch_array($query)
     ?>
 <!DOCTYPE html>
 <html lang="en">

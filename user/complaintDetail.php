@@ -231,7 +231,7 @@
 
                                 <?php 
                                     $nk = $_GET['kode'];
-                                    $remark = mysqli_query($con, "select * from remark where nomor_komplain='$nk'  ORDER BY nomor_komplain DESC LIMIT 1");
+                                    $remark = mysqli_query($con, "select * from remark where nomor_komplain='$nk'  ORDER BY id DESC LIMIT 1");
                                     $rowremark = mysqli_fetch_array($remark);
                                     if($rowremark>0){ ?>
                                             <div class="row" style="color:black">

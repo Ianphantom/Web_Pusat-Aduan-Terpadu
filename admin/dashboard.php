@@ -110,7 +110,7 @@
                         <div class="content">
                             <div class="btn-controls">
                             <?php if($msg){ ?>
-                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <div class="alert alert-success alert-dismissible" role="alert">
                                     <strong>Selamat </strong><?php echo htmlentities($msg)?>
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
@@ -118,7 +118,7 @@
                                 </div>
                             <?php } ?>
                             <?php if($error){ ?>
-                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <div class="alert alert-danger alert-dismissible" role="alert">
                                     <strong>Maaf </strong><?php echo htmlentities($error)?>
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>

@@ -22,4 +22,8 @@ Video 9 : https://youtu.be/xa0tafZJMMs
 
 http://pwebian.000webhostapp.com/project/ -> untuk user
 
+credensial : ian@gmail.com, pass : 123
+
 http://pwebian.000webhostapp.com/project/admin -> untuk admin
+
+credensial : admin, pass : 123
